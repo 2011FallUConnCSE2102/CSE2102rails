@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Supported properties Defines rails configuration options, but do not 
+	stores the actual values -->
+<Properties>
+	<Section name="General">
+		<Property name="locale" type="LIST" values="en_US,te_ST"
+			initClass="rails.util.LocalText" initMethod="setLocale"
+			initParameter="yes" />
+		<Property name="default_game" type="STRING" />
+		<Property name="default_players" type="STRING" />
+		<Property name="local.player.name" type="STRING" />
+
+	</Section>
+	<Section name="Save">
+		<Property name="save.directory" type="DIRECTORY" />
+		<Property name="save.filename.date_time_pattern" type="STRING" />
+		<Property name="save.filename.suffix" type="STRING" />
+		<Property name="save.filename.extension" type="STRING" />
+		<Property name="save.recovery.active" type="BOOLEAN" />
+		<Property name="save.recovery.filepath" type="FILE" />
+	</Section>
+	<Section name="Font">
+		<Property name="font.ui.scale" type="PERCENT" 
+			initClass="rails.ui.swing.GameUIManager" initMethod="updateUILookAndFeel" initParameter="no" />
+		<Property name="font.ui.name" type="FONT"
+			initClass="rails.ui.swing.GameUIManager" initMethod="updateUILookAndFeel" initParameter="no" />
+		<Property name="font.ui.style" type="LIST" values="plain,bold" 
+			initClass="rails.ui.swing.GameUIManager" initMethod="updateUILookAndFeel" initParameter="no" />
+	</Section>
+	<Section name="UI">
+		<Property name="map.autoscroll" type="BOOLEAN" />
+		<Property name="map.zoomstep" type="INTEGER" />
+		<Property name="report.window.type" type="LIST" values="static,dynamic" />
+		<Property name="report.window.open" type="BOOLEAN" />
+		<Property name="report.window.editable" type="BOOLEAN" />
+		<Property name="stockchart.window.open" type="BOOLEAN" />
+	</Section>
+	<Section name="Format">
+		<Property name="money_format" type="STRING" />
+		<Property name="or.number_format" type="LIST" values="simple,composite" />
+		<Property name="route.colour.1" type="COLOR" 
+		initClass="rails.ui.swing.hexmap.HexMap" initMethod="setRouteColours" />
+		<Property name="route.colour.2" type="COLOR" 
+		initClass="rails.ui.swing.hexmap.HexMap" initMethod="setRouteColours" />
+		<Property name="route.colour.3" type="COLOR" 
+		initClass="rails.ui.swing.hexmap.HexMap" initMethod="setRouteColours" />
+		<Property name="route.colour.4" type="COLOR" 
+		initClass="rails.ui.swing.hexmap.HexMap" initMethod="setRouteColours" />
+	</Section>
+	<Section name="Log">
+		<Property name="report.directory" type="DIRECTORY" />
+		<Property name="report.filename.date_time_pattern" type="STRING" />
+		<Property name="report.filename.extension" type="STRING" />
+	</Section>
+</Properties>

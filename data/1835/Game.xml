@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<ComponentManager>
+	<!--Component name="GameManager"  class="rails.game.GameManager"-->
+	<Component name="GameManager"  class="rails.game.specific._1835.GameManager_1835">
+		<Game name="1835"/>
+		<GameOption name="Variant" values="Standard,Clemens,Snake"/>
+		<GameOption name="RouteAwareness" values="Highlight,Deactivate" default="Deactivate" />
+		<GameOption name="RevenueCalculation" values="Suggest,Deactivate" default="Deactivate" />
+		<GameOption name="NoMapMode" type="toggle" default="no" />
+		<GameOption name="UnlimitedTiles" type="toggle" default="no"/>
+		<GameOption name="BYFloatsAt" values="50%,20%" default="50%"/>
+		<GameOption name="LDIncome" values="20M,30M" default="20M"/>
+		<GameOption name="MinorsRequireFloatedBY" type="toggle" default="no"/>
+		<GameParameters>
+			<PlayerShareLimit percentage="100"/>
+			<BankPoolLimit percentage="50"/>
+			<StockRound class="rails.game.specific._1835.StockRound_1835" 
+				sequence="SellBuySell">
+				<NoSaleInFirstSR/>
+				<NoSaleIfNotOperated/>
+			</StockRound>
+			<OperatingRound class="rails.game.specific._1835.OperatingRound_1835"/>
+		</GameParameters>
+		<GuiClasses>
+			<StatusWindow class="rails.ui.swing.gamespecific._1835.StatusWindow_1835"/>
+			<GameUIManager class="rails.ui.swing.gamespecific._1835.GameUIManager_1835"/>
+		</GuiClasses>
+		<EndOfGame>
+			<BankBreaks limit="0" finish="currentOR"/>
+			<!-- "Runs out"; when "broken", -1 is the limit -->
+		</EndOfGame>
+	</Component>
+	<Component name="PlayerManager" class="rails.game.PlayerManager">
+		<Players number="3" cash="600" certLimit="19"/>
+		<Players number="4" cash="475" certLimit="15"/>
+		<Players number="5" cash="390" certLimit="12"/>
+		<Players number="6" cash="340" certLimit="11"/>
+		<Players number="7" cash="310" certLimit="9"/>
+	</Component>
+	<Component name="Bank" class="rails.game.Bank">
+		<Bank amount="12000"/>
+		<Money format="@M"/>
+	</Component>
+	<Component name="TileManager" class="rails.game.TileManager"
+		file="TileSet.xml"/>
+	<Component name="Map" class="rails.game.MapManager" file="Map.xml"/>
+	<Component name="CompanyManager" class="rails.game.CompanyManager"
+		file="CompanyManager.xml"/>
+	<Component name="StockMarket" class="rails.game.StockMarket"
+		file="StockMarket.xml"/>
+	<Component name="TrainManager" class="rails.game.TrainManager">
+		<Defaults>
+			<Reach base="stops" countTowns="yes"/>
+			<Score towns="yes"/>
+		</Defaults>
+		<Train name="2" majorStops="2" cost="80" quantity="9"/>
+		<Train name="2+2" majorStops="2" minorStops="2" cost="120" quantity="4"/>
+		<Train name="3" majorStops="3" cost="180" quantity="4" startPhase="3"/>
+		<Train name="3+3" majorStops="3" minorStops="3" cost="270" quantity="3"/>
+		<Train name="4" majorStops="4" cost="360" quantity="3" startPhase="4"
+			rustedTrain="2"/>
+		<Train name="4+4" majorStops="4" minorStops="4" cost="440" quantity="1"
+			startPhase="4+4" rustedTrain="2+2"/>
+		<Train name="5" majorStops="5" cost="500" quantity="2" startPhase="5"/>
+		<Train name="5+5" majorStops="5" minorStops="5" cost="600" quantity="1"/>
+		<Train name="6" majorStops="6" cost="600" quantity="2" startPhase="6"
+			rustedTrain="3"/>
+		<Train name="6+6" majorStops="6" minorStops="6" cost="720" quantity="4"
+			rustedTrain="3+3"/>
+	</Component>
+	<Component name="PhaseManager" class="rails.game.PhaseManager">
+		<Phase name="2">
+			<Tiles colour="yellow"/>
+			<OperatingRounds number="1"/>
+		</Phase>
+		<Phase name="3">
+			<Tiles colour="yellow,green"/>
+			<OperatingRounds number="2"/>
+			<OffBoardRevenue step="2"/>
+			<Trains tradingAllowed="yes"/>
+		</Phase>
+		<Phase name="4">
+			<Tiles colour="yellow,green"/>
+		</Phase>
+		<Phase name="4+4">
+			<Tiles colour="yellow,green"/>
+		</Phase>
+		<Phase name="5">
+			<Tiles colour="yellow,green,brown"/>
+			<OperatingRounds number="3"/>
+			<!--Privates close="yes"/-->
+			<OffBoardRevenue step="3"/>
+            <Info key="PhaseClosesAllPrivates"/>
+		</Phase>
+		<Phase name="6">
+			<Tiles colour="yellow,green,brown"/>
+		</Phase>
+	</Component>
+</ComponentManager>
